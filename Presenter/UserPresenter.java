@@ -11,7 +11,7 @@ public class UserPresenter {
     }
 
     public void calk() {
-        UserCalculator calc = new UserCalculator(expression);
+        Calculator calc = new UserCalculator(expression);
         switch (expression.getAction()) {
             case "+" -> calc.addition();
             case "-" -> calc.subtraction();
