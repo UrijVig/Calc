@@ -14,7 +14,7 @@ public class UserView {
     }
 
     public void run() {
-        CalculatorLogger.startLogger("homework_07.txt");
+        CalculatorLogger.startLogger("CalcHistory.txt");
         CalculatorLogger.Event("Старт работы программы! ");
         Scanner iScanner = new Scanner(System.in);
         boolean flag = true;
