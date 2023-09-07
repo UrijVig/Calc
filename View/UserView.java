@@ -1,6 +1,7 @@
 package View;
 
 import Model.CalculatorLogger;
+import Model.Exception.DivisionByZeroException;
 import Presenter.UserPresenter;
 
 import java.util.Scanner;
@@ -22,10 +23,16 @@ public class UserView {
             userPresenter.newOneNumber(inputNumber("Введите первое число:", iScanner));
             userPresenter.newTwoNumber(inputNumber("Введите второе число:", iScanner));
             userPresenter.newAction(Character.toString(action(iScanner)));
-            userPresenter.calk();
-            CalculatorLogger.Event(String.format("Результат операции: %s \n", userPresenter.getExpression()));
-            System.out.print("\033[H\033[J");
-            System.out.printf("\t %s \n", userPresenter.getExpression());
+            try {
+                userPresenter.calk();
+                CalculatorLogger.Event(String.format("Результат операции: %s \n", userPresenter.getExpression()));
+                System.out.print("\033[H\033[J");
+                System.out.printf("\t %s \n", userPresenter.getExpression());
+            } catch (DivisionByZeroException e) {
+                CalculatorLogger.Event("Была совершена попытка деления на ноль!");
+                System.out.print("\033[H\033[J");
+                System.out.println(e.getMessage());
+            }
             System.out.println("\t Для того, чтобы закрыть программу нажмите \"N\"");
             if (iScanner.nextLine().equals("N"))
                 flag = false;

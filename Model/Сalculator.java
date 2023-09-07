@@ -1,5 +1,7 @@
 package Model;
 
+import Model.Exception.DivisionByZeroException;
+
 public interface Сalculator {
     void addition();
 
@@ -7,5 +9,5 @@ public interface Сalculator {
 
     void multiplication();
 
-    void division();
+    void division() throws DivisionByZeroException;
 }

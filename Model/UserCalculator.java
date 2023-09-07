@@ -1,5 +1,7 @@
 package Model;
 
+import Model.Exception.DivisionByZeroException;
+
 public class UserCalculator implements Сalculator {
 
     DataExpression ex;
@@ -24,7 +26,10 @@ public class UserCalculator implements Сalculator {
     }
 
     @Override
-    public void division() {
-        ex.setResult(ex.getOneNumber() / ex.getTwoNumber());
+    public void division() throws DivisionByZeroException {
+        if(ex.getTwoNumber()!=0){
+            ex.setResult(ex.getOneNumber() / ex.getTwoNumber());
+        } else throw new DivisionByZeroException("Деление на ноль не предусмотренно возможностями данной программы!");
+
     }
 }

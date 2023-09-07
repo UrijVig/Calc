@@ -1,8 +1,8 @@
 package Presenter;
 
 import Model.DataExpression;
+import Model.Exception.DivisionByZeroException;
 import Model.UserCalculator;
-
 public class UserPresenter {
     private final DataExpression expression;
 
@@ -10,8 +10,8 @@ public class UserPresenter {
         expression = new DataExpression();
     }
 
-    public void calk() {
-        Calculator calc = new UserCalculator(expression);
+    public void calk() throws DivisionByZeroException {
+        UserCalculator calc = new UserCalculator(expression);
         switch (expression.getAction()) {
             case "+" -> calc.addition();
             case "-" -> calc.subtraction();
